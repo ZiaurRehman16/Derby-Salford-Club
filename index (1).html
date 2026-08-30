@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Derby–Salford Forum on Engineering Education &amp; Contemporary Issues</title>
+<meta name="description" content="A joint academic forum between the University of Derby and the University of Salford, examining engineering education and the contemporary issues facing the profession.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c2b2a;
+    --paper:#ece5d6;
+    --paper-light:#f5f1e6;
+    --teal:#3f6b62;
+    --teal-deep:#2a4a44;
+    --brick:#a8432e;
+    --line: rgba(28,43,42,0.16);
+    --serif: "Spectral", Georgia, serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;}
+
+  ::selection{background:var(--brick); color:var(--paper-light);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- Nav ---------- */
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1120px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 24px;
+  }
+  .brand{
+    font-family:var(--serif); font-weight:600; font-size:1.05rem;
+    letter-spacing:0.01em;
+  }
+  .brand span{color:var(--teal-deep);}
+  nav.links{display:flex; gap:28px; font-size:0.95rem;}
+  nav.links a{text-decoration:none; padding:4px 0; border-bottom:1px solid transparent;}
+  nav.links a:hover, nav.links a:focus-visible{border-bottom-color:var(--brick);}
+  .nav-toggle{
+    display:none; background:none; border:1px solid var(--line); border-radius:4px;
+    padding:8px 10px; font-size:1rem; cursor:pointer; color:var(--ink);
+  }
+
+  @media (max-width:760px){
+    nav.links{
+      position:absolute; top:100%; left:0; right:0;
+      background:var(--paper); border-bottom:1px solid var(--line);
+      flex-direction:column; gap:0; padding:8px 24px 18px;
+      display:none;
+    }
+    nav.links.open{display:flex;}
+    nav.links a{padding:12px 0; border-bottom:1px solid var(--line);}
+    .nav-toggle{display:inline-block;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    max-width:1120px; margin:0 auto;
+    padding: 88px 24px 72px;
+    display:grid;
+    grid-template-columns: 1.3fr 0.9fr;
+    gap:56px;
+    align-items:end;
+  }
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(2.3rem, 5vw, 3.6rem);
+    line-height:1.08;
+    margin:0 0 22px;
+    max-width:14ch;
+  }
+  .hero p.lede{
+    font-size:1.1rem;
+    max-width:46ch;
+    margin:0 0 30px;
+    color:#2e3f3d;
+  }
+  .cta-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    font-family:var(--sans); font-weight:500; font-size:0.95rem;
+    padding:12px 22px;
+    border-radius:2px;
+    text-decoration:none;
+    border:1px solid var(--ink);
+  }
+  .btn.solid{background:var(--ink); color:var(--paper-light);}
+  .btn.solid:hover{background:var(--teal-deep); border-color:var(--teal-deep);}
+  .btn.ghost{background:transparent; color:var(--ink);}
+  .btn.ghost:hover{border-color:var(--brick); color:var(--brick);}
+
+  .hero-meta{
+    border-left:1px solid var(--line);
+    padding-left:32px;
+    font-size:0.95rem;
+    color:#3a4a48;
+  }
+  .hero-meta dt{font-family:var(--serif); font-style:italic; color:var(--teal-deep); margin-top:18px;}
+  .hero-meta dt:first-child{margin-top:0;}
+  .hero-meta dd{margin:2px 0 0;}
+
+  @media (max-width:760px){
+    .hero{grid-template-columns:1fr; padding-top:56px;}
+    .hero-meta{border-left:none; border-top:1px solid var(--line); padding-left:0; padding-top:24px;}
+  }
+
+  /* ---------- Section shell ---------- */
+  section{padding:80px 24px;}
+  .section-inner{max-width:1120px; margin:0 auto;}
+  section.tint{background:var(--paper-light); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+
+  h2.heading{
+    font-family:var(--serif); font-weight:500;
+    font-size:clamp(1.6rem, 3vw, 2.2rem);
+    margin:0 0 14px;
+    max-width:20ch;
+  }
+  p.section-intro{max-width:60ch; color:#374542; font-size:1.02rem; margin:0 0 44px;}
+
+  /* ---------- About ---------- */
+  .about-grid{
+    display:grid; grid-template-columns: 1fr 1fr; gap:48px;
+  }
+  .about-grid p{margin:0 0 16px; color:#2e3f3d;}
+  @media (max-width:760px){.about-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Chapters (Derby / Salford split) ---------- */
+  .chapters{
+    display:grid; grid-template-columns:1fr 1px 1fr; gap:0;
+    border:1px solid var(--line);
+  }
+  .chapter{padding:36px 40px;}
+  .chapter-divider{background:var(--line);}
+  .chapter h3{
+    font-family:var(--serif); font-weight:600; font-size:1.35rem; margin:0 0 6px;
+  }
+  .chapter .place{color:var(--teal-deep); font-style:italic; font-family:var(--serif); margin-bottom:18px;}
+  .chapter dl{margin:0; font-size:0.95rem;}
+  .chapter dt{color:#5a6663; margin-top:14px;}
+  .chapter dt:first-child{margin-top:0;}
+  .chapter dd{margin:2px 0 0; font-weight:500;}
+  @media (max-width:760px){
+    .chapters{grid-template-columns:1fr;}
+    .chapter-divider{height:1px; width:100%;}
+  }
+
+  /* ---------- Topics (flowing, not numbered) ---------- */
+  .topics-flow{
+    display:flex; flex-wrap:wrap; gap:12px;
+  }
+  .topics-flow a{
+    text-decoration:none;
+    padding:9px 16px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    font-size:0.92rem;
+    color:var(--ink);
+    background:var(--paper);
+    transition:border-color 0.15s ease, color 0.15s ease;
+  }
+  .topics-flow a:hover, .topics-flow a:focus-visible{
+    border-color:var(--brick); color:var(--brick);
+  }
+
+  /* ---------- Meetings ---------- */
+  .meetings-list{border-top:1px solid var(--line);}
+  .meeting-row{
+    display:grid; grid-template-columns: 120px 1fr 160px;
+    gap:24px;
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+    align-items:baseline;
+  }
+  .meeting-row .date{
+    font-family:var(--serif); font-style:italic; color:var(--teal-deep);
+  }
+  .meeting-row h4{margin:0 0 4px; font-size:1.05rem; font-weight:600;}
+  .meeting-row p{margin:0; color:#4a5654; font-size:0.92rem;}
+  .meeting-row .venue{font-size:0.88rem; color:#5a6663; text-align:right;}
+  @media (max-width:640px){
+    .meeting-row{grid-template-columns:1fr; gap:6px;}
+    .meeting-row .venue{text-align:left;}
+  }
+
+  /* ---------- Join steps ---------- */
+  .join-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:36px;
+  }
+  .join-step .n{
+    font-family:var(--serif); font-style:italic; color:var(--brick); font-size:1.1rem;
+  }
+  .join-step h3{font-size:1.1rem; margin:8px 0 8px;}
+  .join-step p{margin:0; color:#3a4a48; font-size:0.95rem;}
+  @media (max-width:760px){.join-grid{grid-template-columns:1fr; gap:28px;}}
+
+  /* ---------- Contact / footer ---------- */
+  footer{
+    background:var(--ink); color:var(--paper-light);
+    padding:64px 24px 40px;
+  }
+  .footer-inner{max-width:1120px; margin:0 auto; display:grid; grid-template-columns:1.2fr 1fr; gap:48px;}
+  footer h2.heading{color:var(--paper-light);}
+  footer p{color:#c7d2cf;}
+  footer a.email{
+    font-family:var(--serif); font-style:italic; font-size:1.3rem; color:var(--paper-light);
+    text-decoration:none; border-bottom:1px solid var(--teal);
+  }
+  footer a.email:hover{color:var(--brick); border-color:var(--brick);}
+  .footer-links{font-size:0.92rem;}
+  .footer-links a{display:block; text-decoration:none; color:#c7d2cf; padding:6px 0;}
+  .footer-links a:hover{color:var(--paper-light);}
+  .fine-print{
+    max-width:1120px; margin:48px auto 0; padding-top:24px;
+    border-top:1px solid rgba(245,241,230,0.15);
+    font-size:0.8rem; color:#8fa19d;
+  }
+  @media (max-width:760px){.footer-inner{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav-inner">
+    <div class="brand">Derby–Salford <span>EEF</span></div>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" id="navToggle">Menu</button>
+    <nav class="links" id="primary-nav">
+      <a href="#about">About</a>
+      <a href="#institutions">Institutions</a>
+      <a href="#topics">Themes</a>
+      <a href="#seminars">Seminars</a>
+      <a href="#join">Participate</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div>
+    <h1>A joint forum on how engineers are taught, and what the profession is facing.</h1>
+    <p class="lede">The Derby–Salford Forum on Engineering Education and Contemporary Issues brings staff, researchers, and postgraduates from both universities together to examine engineering pedagogy alongside the pressures reshaping the profession — accreditation, sustainability, automation, and who gets to become an engineer.</p>
+    <div class="cta-row">
+      <a class="btn solid" href="#seminars">See the next seminar</a>
+      <a class="btn ghost" href="#join">How to participate</a>
+    </div>
+  </div>
+  <dl class="hero-meta">
+    <dt>Established</dt>
+    <dd>2024, jointly by engineering staff at Derby and Salford</dd>
+    <dt>Convenes</dt>
+    <dd>Monthly, alternating institutions and online</dd>
+    <dt>Open to</dt>
+    <dd>Academic staff, postgraduate researchers, and industry partners</dd>
+  </dl>
+</div>
+
+<section id="about">
+  <div class="section-inner">
+    <h2 class="heading">Why a forum between two engineering departments</h2>
+    <p class="section-intro">Derby and Salford teach engineering to different cohorts, under different pressures, and rarely compare notes.</p>
+    <div class="about-grid">
+      <div>
+        <p>The forum grew out of informal exchanges between engineering education researchers at both universities, who kept finding the same problems on each other's desks: how to assess work fairly now that generative AI is part of every student's toolkit, how to fill an accreditation panel's expectations without hollowing out the teaching, how to widen participation in a discipline that still skews narrow.</p>
+        <p>Rather than solve these separately, we meet to compare approaches directly — a curriculum change piloted in Salford tested against Derby's cohort, a placement model from one institution examined by staff who've never used it.</p>
+      </div>
+      <div>
+        <p>Sessions are led by a short provocation — a paper, a policy change, a piece of internal data — followed by open discussion. We are not a publication venue; findings shared here are preliminary and off the record unless a presenter says otherwise.</p>
+        <p>Participation is not limited to engineering education specialists. Practising engineers, employers, and postgraduate researchers are welcome to bring a question from outside the classroom.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tint" id="institutions">
+  <div class="section-inner">
+    <h2 class="heading">The two institutions</h2>
+    <p class="section-intro">Hosting alternates each session; attendance is open to both regardless of host.</p>
+    <div class="chapters">
+      <div class="chapter">
+        <h3>University of Derby</h3>
+        <div class="place">College of Science &amp; Engineering, Kedleston Road</div>
+        <dl>
+          <dt>Hosts</dt>
+          <dd>Odd-numbered sessions, in person</dd>
+          <dt>Venue</dt>
+          <dd>Engineering Centre, seminar room 2 <em>(confirmed by email before each session)</em></dd>
+          <dt>Lead contact</dt>
+          <dd>Add your Derby lead's name, title, and email</dd>
+        </dl>
+      </div>
+      <div class="chapter-divider"></div>
+      <div class="chapter">
+        <h3>University of Salford</h3>
+        <div class="place">School of Science, Engineering &amp; Environment, Peel Park</div>
+        <dl>
+          <dt>Hosts</dt>
+          <dd>Even-numbered sessions, in person</dd>
+          <dt>Venue</dt>
+          <dd>Newton Building, engineering seminar suite <em>(confirmed by email before each session)</em></dd>
+          <dt>Lead contact</dt>
+          <dd>Add your Salford lead's name, title, and email</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="topics">
+  <div class="section-inner">
+    <h2 class="heading">What the forum returns to</h2>
+    <p class="section-intro">No fixed research programme — these are the recurring threads. Propose a session on any of them, or something we've missed.</p>
+    <div class="topics-flow">
+      <a href="#join">Generative AI and assessment integrity</a>
+      <a href="#join">Accreditation and the IEng/CEng pipeline</a>
+      <a href="#join">Widening participation in engineering</a>
+      <a href="#join">Sustainability and net zero in curricula</a>
+      <a href="#join">Degree apprenticeships vs. traditional routes</a>
+      <a href="#join">Work-integrated and placement learning</a>
+      <a href="#join">Digital twins and simulation in teaching</a>
+      <a href="#join">Employability and the skills gap</a>
+      <a href="#join">Gender and diversity in the profession</a>
+      <a href="#join">Automation's effect on entry-level roles</a>
+      <a href="#join">Academic–industry partnerships</a>
+      <a href="#join">Mental health and workload in engineering study</a>
+    </div>
+  </div>
+</section>
+
+<section class="tint" id="seminars">
+  <div class="section-inner">
+    <h2 class="heading">Upcoming seminars</h2>
+    <p class="section-intro">Replace these with your actual schedule before publishing — dates, titles, and venues are placeholders.</p>
+    <div class="meetings-list">
+      <div class="meeting-row">
+        <div class="date">12 Sep</div>
+        <div>
+          <h4>Assessing engineering coursework in the age of generative AI</h4>
+          <p>Opening seminar of term. Short provocation, then open discussion.</p>
+        </div>
+        <div class="venue">Salford · Newton Building</div>
+      </div>
+      <div class="meeting-row">
+        <div class="date">17 Oct</div>
+        <div>
+          <h4>Degree apprenticeships: what accreditation panels actually want</h4>
+          <p>With a guest respondent from an accrediting body.</p>
+        </div>
+        <div class="venue">Derby · Engineering Centre</div>
+      </div>
+      <div class="meeting-row">
+        <div class="date">21 Nov</div>
+        <div>
+          <h4>Widening participation: comparing five years of cohort data</h4>
+          <p>Joint session, linked by video between both venues.</p>
+        </div>
+        <div class="venue">Both institutions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="join">
+  <div class="section-inner">
+    <h2 class="heading">How to take part</h2>
+    <p class="section-intro">Participation is free and open to academic staff, postgraduate researchers, and industry partners at either institution or beyond.</p>
+    <div class="join-grid">
+      <div class="join-step">
+        <div class="n">First</div>
+        <h3>Attend a seminar</h3>
+        <p>No registration needed to sit in on one — turn up at the host venue or request the video link.</p>
+      </div>
+      <div class="join-step">
+        <div class="n">Then</div>
+        <h3>Join the distribution list</h3>
+        <p>Email the address below and we'll add you, with notes and the provocation reading ahead of each session.</p>
+      </div>
+      <div class="join-step">
+        <div class="n">Finally</div>
+        <h3>Propose a session</h3>
+        <p>Bring a paper, a policy, or an internal finding and lead the provocation yourself.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-inner">
+    <div>
+      <h2 class="heading">Get in touch</h2>
+      <p>Questions about a seminar, a venue change, or joining the distribution list.</p>
+      <a class="email" href="mailto:hello@derbysalford-eef.org">hello@derbysalford-eef.org</a>
+    </div>
+    <div class="footer-links">
+      <a href="#about">About the forum</a>
+      <a href="#institutions">Derby &amp; Salford</a>
+      <a href="#seminars">Seminar schedule</a>
+      <a href="#join">How to take part</a>
+    </div>
+  </div>
+  <p class="fine-print">Derby–Salford Forum on Engineering Education and Contemporary Issues. Replace placeholder names, emails, and dates before publishing this site.</p>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('primary-nav');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+</body>
+</html>
